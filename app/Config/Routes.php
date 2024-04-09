@@ -11,11 +11,10 @@ use App\Controllers\News;
  */
 $routes->get('/', 'Home::index');
 
+// News Routes
+$routes->get('news', [News::class, 'index']);
+$routes->get('news/(:segment)', [News::class, 'show']);
 
 // My Defined routes for news app:
 $routes->get('pages', [Pages::class, 'index']);
 $routes->get('(:segment)', [Pages::class, 'view']);
-
-// News Routes
-$routes->get('news', [News::class, 'index']);
-$routes->get('news/(:segment)', [News::class, 'show']);

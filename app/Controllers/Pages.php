@@ -21,7 +21,7 @@ class Pages extends BaseController
         // This func checks whether file is it's expected to be.
         if(!is_file(APPPATH . 'Views/pages/' . $page . '.php')) {
             // If the requested page is not there, show default error page
-            //throw new PageNotFoundException($page);
+            throw new PageNotFoundException($page);
         }
         $data['title'] = ucfirst($page);
 

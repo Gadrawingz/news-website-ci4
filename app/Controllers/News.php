@@ -7,36 +7,50 @@ use CodeIgniter\Exceptions\PageNotFoundException;
 
 class News extends BaseController
 {
-    // News index function
+    protected $db;
+    protected $table = 'news';
+    
+    public function __construct()
+    {
+        // $this->load->model('Authdata');
+        $this->db = \Config\Database::connect();
+        // OR: $this->db = db_connect();
+    }
+
     public function index()
     {
-        $model = model(NewsModel::class);
+        //$model = model(NewsModel::class);
 
         $data = [
-            'news'  => $model->getNews(),
             'title' => 'News archive',
         ];
 
-        return 
-            view('templates/header', $data).
-            view('news/index').
-            view('templates/footer');
+        return view('templates/header', $data)
+            . view('news/index')
+            . view('templates/footer');
     }
 
     public function show($slug = null)
     {
+        /*
         $model = model(NewsModel::class);
 
-        $data['news'] = $model->getNews($slug);
+        // $data['news'] = $model->getNews($slug);
+        $data['news'] = "cole-apogizes-for-a-diss";
 
         if (empty($data['news'])) {
             throw new PageNotFoundException('Cannot find the news item: ' . $slug);
         }
 
-        $data['title'] = $data['news']['title'];
+        // $data['title'] = $data['news']['title'];
+        $data['title'] = "Cole Apologizes";
 
         return view('templates/header', $data)
             . view('news/view')
             . view('templates/footer');
+        */
     }
+
+
+
 }
